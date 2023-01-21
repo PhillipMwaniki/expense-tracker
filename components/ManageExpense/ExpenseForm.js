@@ -5,28 +5,33 @@ import Input from "./Input";
 const ExpenseForm = () => {
   const amountChangedHandler = () => {};
   return (
-    <View>
-      <Input
-        label="Amount"
-        textInputConfig={{
-          keyboardType: "decimal-pad",
-          onChangeText: amountChangedHandler,
-        }}
-      />
-      <Input
-        label="Date"
-        textInputConfig={{
-          placeholder: "YYYY-MM-DD",
-          maxLength: 10,
-          onChangeText: () => {},
-        }}
-      />
+    <View style={styles.container}>
+      <Text style={styles.title}>Your Expense</Text>
+      <View style={styles.firstContainer}>
+        <Input
+          label="Amount"
+          style={styles.rowInput}
+          textInputConfig={{
+            keyboardType: "decimal-pad",
+            onChangeText: amountChangedHandler,
+          }}
+        />
+        <Input
+          label="Date"
+          style={styles.rowInput}
+          textInputConfig={{
+            placeholder: "YYYY-MM-DD",
+            maxLength: 10,
+            onChangeText: () => {},
+          }}
+        />
+      </View>
       <Input
         label="Description"
         textInputConfig={{
           multiline: true,
           //   autoCorrect: true,
-          //   autoCapitalize: true,
+          autoCapitalize: "sentences",
           onChangeText: () => {},
         }}
       />
@@ -36,4 +41,22 @@ const ExpenseForm = () => {
 
 export default ExpenseForm;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  firstContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  container: {
+    marginTop: 40,
+  },
+  rowInput: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
+    marginVertical: 24,
+  },
+});
